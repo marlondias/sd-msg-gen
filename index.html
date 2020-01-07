@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/mainStyle.css">
+    <title>Service Desk - Gerador de mensagens</title>
+  </head>
+
+  <body>
+    <div id="box1" class="container">
+      <h2 class="title" title="Marlon Dias, 2019">Service Desk - Gerador de mensagens</h2>
+
+      <div class="row">
+        <section id="greetingConfig" class="col-5">
+          <div class="form-group">
+            <label>Saudação</label>
+            <div class="dropdown">
+              <button type="button" id="greetingDropdownButton" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Selecione uma saudação
+              </button>
+              <div id="greetingDropDownMenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton"></div>
+            </div>
+          </div>    
+          <div class="form-group">
+            <input type="text" id="greetingTextInput" class="form-control" aria-describedby="greetingText" maxlength="100" placeholder="(selecione)" data-mapid="" disabled>
+            <small id="grtInputDescription" class="form-text text-muted">Prévia da saudação inicial</small>
+          </div>
+        </section>
+        <section id="endingConfig" class="col-7">
+          <div class="form-group">
+            <label for="endingTextarea">Encerramento</label>
+            <textarea id="endingTextarea" class="form-control" rows="4" placeholder="Digite seu encerramento"></textarea>
+          </div>
+        </section>
+      </div>
+
+      <div class="row">
+        <section id="preferencesSection" class="col-5">
+          <label>Variáveis</label>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">{{usuario}}</span>
+              </div>
+              <input type="text" id="usuarioVarInput" class="form-control" name="sdmg-usuario" placeholder="Nome do usuário final" aria-label="Usuário" aria-describedby="basic-addon1">
+              <div class="input-group-append">
+                <button type="button" class="btn btn-secondary variable-add-button" data-vtoken="{{usuario}}"><strong>+</strong></button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2">{{gestor}}</span>
+              </div>
+              <input type="text" id="gestorVarInput" class="form-control" name="sdmg-gestor" placeholder="Nome do aprovador" aria-label="Aprovador" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button type="button" class="btn btn-secondary variable-add-button" data-vtoken="{{gestor}}"><strong>+</strong></button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">{{var1}}</span>
+              </div>
+              <input type="text" id="v1VarInput" class="form-control" placeholder="Valor da variável 1" aria-label="Variável 1" aria-describedby="basic-addon3">
+              <div class="input-group-append">
+                <button type="button" class="btn btn-secondary variable-add-button" data-vtoken="{{var1}}"><strong>+</strong></button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon4">{{var2}}</span>
+              </div>
+              <input type="text" id="v2VarInput" class="form-control" placeholder="Valor da variável 2" aria-label="Variável 2" aria-describedby="basic-addon4">
+              <div class="input-group-append">
+                <button type="button" class="btn btn-secondary variable-add-button" data-vtoken="{{var2}}"><strong>+</strong></button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section id="mainContentConfig" class="col-7">
+          <div class="form-group">
+            <label for="mainContentTextarea">Conteúdo</label>
+            <div class="dropdown">
+                <button type="button" id="mainContentDropdownButton" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Selecione um texto base
+                </button>
+                <div id="modeltextDropDownMenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton"></div>
+              </div>
+          </div>
+          <textarea id="mainContentTextarea" class="form-control" rows="5" placeholder="Selecione ou digite seu conteúdo principal" data-mapid=""></textarea>
+        </section>
+      </div>
+    </div>
+
+    <div class="bg-dark">
+      <div id="box2" class="container">
+        <section id="resultSection" class="row">
+          <div class="text-light col-12">
+              <label for="finalMessageTextarea">Mensagem final</label>
+          </div>        
+          <div class="col">
+            <div class="form-group">
+              <textarea id="finalMessageTextarea" class="form-control" rows="6" placeholder="Aqui surgirá sua mensagem. Defina os campos acima e clique em 'Atualizar'." disabled></textarea>
+            </div>
+          </div>
+          <div class="col-3">
+            <button type="button" id="updateFinalTextButton" class="btn btn-block btn-primary">Atualizar</button>
+            <button type="button" id="copyFinalTextButton" class="btn btn-block btn-success btn-lg">Copiar texto</button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./assets/mainLogic.js"></script>
+  </body>
+</html>
